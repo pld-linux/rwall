@@ -1,7 +1,7 @@
 Summary:	Client and server for sending messages to a host's logged in users.
 Name:		rwall
 Version:	0.10
-Release:	23
+Release:	24
 Copyright:	BSD
 Group:		System Environment/Daemons
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/daemons/netkit-%{name}-%{version}.tar.gz
