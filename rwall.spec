@@ -1,4 +1,4 @@
-Summary:	Client and server for sending messages to a host's logged in users.
+Summary:	Client and server for sending messages to a host's logged in users
 Name:		rwall
 Version:	0.16
 Release:	1
@@ -25,7 +25,7 @@ Install rwall if you'd like the ability to send messages to users
 logged in to a specified host machine.
 
 %prep
-%setup -q -n netkit-rwall-0.16
+%setup -q -n netkit-rwall-%{version}
 %patch0 -p1
 
 %build
@@ -34,8 +34,8 @@ logged in to a specified host machine.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}/man{1,8}}
-install -d $RPM_BUILD_ROOT/etc/rc.d/init.d
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}/man{1,8}} \
+	$RPM_BUILD_ROOT/etc/rc.d/init.d
 
 %{__make} install MANDIR=%{_mandir}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/rwalld
@@ -52,10 +52,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add rwalld
-
+if [ -f /var/lock/subsys/rwalld ]; then
+	/etc/rc.d/init.d/rwalld restart 1>&2
+else
+	echo "Type \"/etc/rc.d/init.d/rwalld start\" to start rwalld sever" 1>&2
+fi
+	
 %postun
-if [ $1 = 0 ]; then
-    /sbin/chkconfig --del rwalld
+if [ "$1" = "0" ]; then
+	if [ -f /var/lock/subsys/rwalld ]; then
+		/etc/rc.d/init.d/rwalld stop 1>&2
+	fi
+	/sbin/chkconfig --del rwalld
 fi
 
 %files
