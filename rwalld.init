@@ -29,10 +29,7 @@ case "$1" in
 		msg_starting rpc.rwalld
 		daemon rpc.rwalld
 		RETVAL=$?
-		if [ $RETVAL -eq 0 ]; then
-			touch /var/lock/subsys/rwalld
-			RETVAL=1
-		fi
+		[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/rwalld
 	else
 		msg_Already_Running rpc.rwalld
 		exit 1
