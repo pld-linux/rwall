@@ -14,7 +14,6 @@ Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{ver
 # Source0-md5:	c7a85262fc9911e0574ce5706ce69369
 Source1:	%{name}d.init
 Patch0:		netkit-%{name}-WALL_CMD.patch
-Prereq:		rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -60,8 +59,8 @@ o anda çalýþan tüm kullanýcýlara yansýtýr.
 Summary:	Server for sending messages to a host's logged in users
 Summary(pl):	Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników
 Group:		Networking/Daemons
-Prereq:		rc-scripts
-Prereq:		/sbin/chkconfig
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
 Obsoletes:	rwall-server
 
 %description -n rwalld
@@ -75,15 +74,20 @@ Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników.
 %patch0 -p1
 
 %build
-./configure --installroot=$RPM_BUILD_ROOT
-%{__make} CFLAGS="%{rpmcflags}"
+./configure \
+	--installroot=$RPM_BUILD_ROOT
+
+%{__make} \
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}/man{1,8}} \
 	$RPM_BUILD_ROOT/etc/rc.d/init.d
 
-%{__make} install MANDIR=%{_mandir}
+%{__make} install \
+	MANDIR=%{_mandir}
+
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/rwalld
 
 rm -f $RPM_BUILD_ROOT%{_mandir}/man8/rwalld.8
