@@ -41,7 +41,7 @@ Summary:	Server for sending messages to a host's logged in users
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
-Requires:	rc-scripts
+Prereq:		rc-scripts
 Obsoletes:	rwall-server
 
 %description -n rwalld
