@@ -4,7 +4,7 @@ Summary(fr):	Client et serveur pour envoyer des messages aux utilisteurs de mach
 Summary(tr):	Baþka bir makinada çalýþan tüm kullanýcýlara mesaj gönderme
 Name:		rwall
 Version:	0.16
-Release:	7
+Release:	8
 License:	BSD
 Group:		Networking/Daemons
 Group(pl):	Sieciowe/Serwery
