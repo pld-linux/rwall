@@ -11,7 +11,7 @@ Patch1:		netkit-rwalld-0.10-banner.patch
 Patch2:		netkit-rwall-install.patch
 Prereq:		/sbin/chkconfig
 Requires:	rc-scripts
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The rwall command sends a message to all of the users logged into
