@@ -1,9 +1,13 @@
 Summary:	Client and server for sending messages to a host's logged in users
+Summary(de):	Client und Server zum Senden von Nachrichten an Benutzer am entfernten Host
+Summary(fr):	Client et serveur pour envoyer des messages aux utilisteurs de machines distantes
+Summary(tr):	Baþka bir makinada çalýþan tüm kullanýcýlara mesaj gönderme
 Name:		rwall
 Version:	0.16
-Release:	1
-Copyright:	BSD
-Group:		System Environment/Daemons
+Release:	7
+License:	BSD
+Group:		Networking/Daemons
+Group(pl):	Sieciowe/Serwery
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/daemons/netkit-%{name}-%{version}.tar.gz
 Source1:	rwalld.init
 Patch0:		netkit-rwall-WALL_CMD.patch
@@ -12,17 +16,33 @@ Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The rwall command sends a message to all of the users logged into
-a specified host.  Actually, your machine's rwall client sends the
+The rwall command sends a message to all of the users logged into a
+specified host. Actually, your machine's rwall client sends the
 message to the rwall daemon running on the specified host, and the
-rwall daemon relays the message to all of the users logged in to
-that host.  The rwall daemon is run from /etc/inetd.conf and is
-disabled by default on Red Hat Linux systems (it can be very annoying
-to keep getting all those messages when you're trying to play
-Quake--I mean trying to get some work done).
+rwall daemon relays the message to all of the users logged in to that
+host. The rwall daemon is run from /etc/inetd.conf and is disabled by
+default on Red Hat Linux systems (it can be very annoying to keep
+getting all those messages when you're trying to play Quake--I mean
+trying to get some work done).
 
-Install rwall if you'd like the ability to send messages to users
-logged in to a specified host machine.
+%description -l de
+Der rwall-Client sendet eine Meldung an einen rwall-Dämon, der auf
+einem entfernten Rechner läuft und die Meldung an alle Benutzer der
+des entfernten Rechners verbreitet. Der rwall-Dämon wird von
+/etc/inetd.conf betrieben und ist auf Red-Hat-Systemen standardmäßig
+deaktiviert.
+
+%description -l fr
+Le client rwall envoie un message à un démon rwall tournant sur une
+machine distante, qui relaie le message vers tous les utilisateurs de
+la machine distante. Le démon rwall est lancé depuis /etc/inetd.conf,
+et est desactivé par défaut sur les systèmes Red Hat.
+
+%description -l tr
+Bir rwall sunucusu kendisine istemci tarafýndan gönderilen bir mesajý
+o anda çalýþan tüm kullanýcýlara yansýtýr. Bu paket hem istemciyi hem
+sunucuyu içermektedir ve /etc/inetd.conf'tan çalýþtýrýlmaktadýr.
+Öntanýmlý olarak bu hizmet kullaným dýþý býrakýlmýþtýr.
 
 %prep
 %setup -q -n netkit-rwall-%{version}
