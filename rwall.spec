@@ -1,14 +1,12 @@
 Summary:	Client and server for sending messages to a host's logged in users.
 Name:		rwall
-Version:	0.10
-Release:	24
+Version:	0.16
+Release:	1
 Copyright:	BSD
 Group:		System Environment/Daemons
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/daemons/netkit-%{name}-%{version}.tar.gz
 Source1:	rwalld.init
-Patch0:		netkit-rwall-0.10-misc.patch
-Patch1:		netkit-rwalld-0.10-banner.patch
-Patch2:		netkit-rwall-install.patch
+Patch0:		netkit-rwall-WALL_CMD.patch
 Prereq:		/sbin/chkconfig
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,21 +25,23 @@ Install rwall if you'd like the ability to send messages to users
 logged in to a specified host machine.
 
 %prep
-%setup -q -n netkit-rwall-0.10
+%setup -q -n netkit-rwall-0.16
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
-%{__make} RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
+./configure --installroot=$RPM_BUILD_ROOT
+%{__make} CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}/man{1,8}}
 install -d $RPM_BUILD_ROOT/etc/rc.d/init.d
 
-%{__make} INSTALLROOT=$RPM_BUILD_ROOT install
+%{__make} install MANDIR=%{_mandir}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/rwalld
+
+rm -f $RPM_BUILD_ROOT%{_mandir}/man8/rwalld.8
+echo ".so rpc.rwalld.8" > $RPM_BUILD_ROOT%{_mandir}/man8/rwalld.8
 
 strip --strip-unneeded $RPM_BUILD_ROOT{%{_bindir},%{_sbindir}}/* || :
 
