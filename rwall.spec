@@ -70,10 +70,20 @@ echo ".so rpc.rwalld.8" > $RPM_BUILD_ROOT%{_mandir}/man8/rwalld.8
 rm -rf $RPM_BUILD_ROOT
 
 %post -n rwalld
-NAME=rwalld; DESC="rwalld server"; %chkconfig_add
+/sbin/chkconfig --add rwalld
+if [ -f /var/lock/subsys/rwalld ]; then
+	/etc/rc.d/init.d/rwalld restart 1>&2
+else
+	echo "Type \"/etc/rc.d/init.d/rwalld start\" to start rwalld server" 1>&2
+fi
 	
 %postun -n rwalld
-NAME=rwalld; %chkconfig_del
+if [ "$1" = "0" ]; then
+	if [ -f /var/lock/subsys/rwalld ]; then
+		/etc/rc.d/init.d/rwalld stop 1>&2
+	fi
+	/sbin/chkconfig --del rwalld
+fi
 
 %files
 %defattr(644,root,root,755)
