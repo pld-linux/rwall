@@ -23,7 +23,7 @@ case "$1" in
   start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/rwalld ]; then
-		msg_starting rwalld
+		msg_starting rpc.rwalld
 		daemon rpc.rwalld
 		touch /var/lock/subsys/rwalld
 		RETVAL2=$?
@@ -32,17 +32,17 @@ case "$1" in
 			RETVAL=1
 		fi
 	else
-		msg_Already_Running rwall
+		msg_Already_Running rpc.rwalld
 		exit 1
 	fi
         ;;
   stop)
 	if [ -f /var/lock/subsys/rwalld ]; then
 		msg_stopping rpc.rwalld
-		killproc smbd
+		killproc rpc.rwalld
 		rm -f /var/lock/subsys/rwalld >/dev/null 2>&1
 	else
-		msg_Not_Running rwalld
+		msg_Not_Running rpc.rwalld
 		exit 1
 	fi	
         ;;
