@@ -10,10 +10,6 @@ Version:	0.17
 Release:	13
 License:	BSD
 Group:		Networking
-Group(de):	Netzwerkwesen
-Group(es):	Red
-Group(pl):	Sieciowe
-Group(pt_BR):	Rede
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
 Source1:	%{name}d.init
 Patch0:		netkit-%{name}-WALL_CMD.patch
@@ -64,8 +60,6 @@ o anda çalýþan tüm kullanýcýlara yansýtýr.
 Summary:	Server for sending messages to a host's logged in users
 Summary(pl):	Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników
 Group:		Networking/Daemons
-Group(de):	Netzwerkwesen/Server
-Group(pl):	Sieciowe/Serwery
 Prereq:		rc-scripts
 Prereq:		/sbin/chkconfig
 Obsoletes:	rwall-server
