@@ -18,6 +18,9 @@ if is_no "${NETWORKING}"; then
 	exit 1
 fi
 
+# Get rwalld config
+[ -f /etc/sysconfig/rwalld ] && . /etc/sysconfig/rwalld
+
 # See how we were called.
 case "$1" in
   start)
@@ -25,7 +28,6 @@ case "$1" in
 	if [ ! -f /var/lock/subsys/rwalld ]; then
 		msg_starting rpc.rwalld
 		daemon rpc.rwalld
-		touch /var/lock/subsys/rwalld
 		RETVAL2=$?
 		if [ $RETVAL -eq 0 -a $RETVAL2 -eq 0 ]; then
 			touch /var/lock/subsys/rwalld
