@@ -1,14 +1,17 @@
 Summary:	Client for sending messages to a host's logged in users
 Summary(de):	Client zum Senden von Nachrichten an Benutzer am entfernten Host
-Summary(fr):	Client  pour envoyer des messages aux utilisteurs de machines distantes
+Summary(fr):	Client pour envoyer des messages aux utilisteurs de machines distantes
+Summary(pl):	Klient do wysy³ania komunikatów do zalogowanych u¿ytkowników
 Summary(tr):	Baþka çalýþan tüm kullanýcýlara mesaj gönderme
 Name:		rwall
 Version:	0.17
-Release:	11
+Release:	12
 License:	BSD
 Group:		Networking
 Group(de):	Netzwerkwesen
+Group(es):	Red
 Group(pl):	Sieciowe
+Group(pt_BR):	Rede
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
 Source1:	%{name}d.init
 Patch0:		netkit-%{name}-WALL_CMD.patch
@@ -32,20 +35,31 @@ Le client rwall envoie un message à un démon rwall tournant sur une
 machine distante, qui relaie le message vers tous les utilisateurs de
 la machine distante.
 
+%description -l pl
+Komenda rwall wysy³a komunikat do wszystkich u¿ytkowników zalogowanych
+na okre¶lony komputer. Lokalny klient rwall wysy³a komunikat do
+serwera rwall dzia³aj±cego na wybranym komputerze, który to przekazuje
+go wszystkim zalogowanym tam u¿ytkownikom.
+
 %description -l tr
 Bir rwall sunucusu kendisine istemci tarafýndan gönderilen bir mesajý
 o anda çalýþan tüm kullanýcýlara yansýtýr.
 
 %package -n rwalld
 Summary:	Server for sending messages to a host's logged in users
+Summary(pl):	Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
 Prereq:		rc-scripts
+Prereq:		/sbin/chkconfig
 Obsoletes:	rwall-server
 
 %description -n rwalld
 Server for sending messages to a host's logged in users.
+
+%description -n rwalld -l pl
+Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników.
 
 %prep
 %setup -q -n netkit-rwall-%{version}
