@@ -75,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 if [ -f /var/lock/subsys/rwalld ]; then
 	/etc/rc.d/init.d/rwalld restart 1>&2
 else
-	echo "Type \"/etc/rc.d/init.d/rwalld start\" to start rwalld sever" 1>&2
+	echo "Type \"/etc/rc.d/init.d/rwalld start\" to start rwalld server" 1>&2
 fi
 	
 %postun
