@@ -53,7 +53,7 @@ Server for sending messages to a host's logged in users.
 
 %build
 ./configure --installroot=$RPM_BUILD_ROOT
-%{__make} CFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}"
+%{__make} CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
