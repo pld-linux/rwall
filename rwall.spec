@@ -11,6 +11,7 @@ Release:	13
 License:	BSD
 Group:		Networking
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
+# Source0-md5:	c7a85262fc9911e0574ce5706ce69369
 Source1:	%{name}d.init
 Patch0:		netkit-%{name}-WALL_CMD.patch
 Prereq:		rc-scripts
