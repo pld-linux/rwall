@@ -4,7 +4,7 @@ Summary(fr):	Client  pour envoyer des messages aux utilisteurs de machines dista
 Summary(tr):	Baþka çalýþan tüm kullanýcýlara mesaj gönderme
 Name:		rwall
 Version:	0.17
-Release:	6
+Release:	11
 License:	BSD
 Group:		Networking
 Group(de):	Netzwerkwesen
@@ -12,7 +12,7 @@ Group(pl):	Sieciowe
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
 Source1:	%{name}d.init
 Patch0:		netkit-%{name}-WALL_CMD.patch
-Prereq:		/sbin/chkconfig
+Prereq:		rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -20,7 +20,7 @@ The rwall command sends a message to all of the users logged into a
 specified host. Actually, your machine's rwall client sends the
 message to the rwall daemon running on the specified host, and the
 rwall daemon relays the message to all of the users logged in to that
-host. 
+host.
 
 %description -l de
 Der rwall-Client sendet eine Meldung an einen rwall-Dämon, der auf
@@ -91,6 +91,7 @@ fi
 %{_mandir}/man1/rwall.1*
 
 %files -n rwalld
+%defattr(644,root,root,755)
 %attr(754,root,root) %config /etc/rc.d/init.d/rwalld
 %attr(755,root,root) %{_sbindir}/rpc.rwalld
 %{_mandir}/man8/rpc.rwalld.8*
