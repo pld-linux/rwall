@@ -91,7 +91,7 @@ else
 	echo "Type \"/etc/rc.d/init.d/rwalld start\" to start rwalld server" 1>&2
 fi
 	
-%postun -n rwalld
+%preun -n rwalld
 if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/rwalld ]; then
 		/etc/rc.d/init.d/rwalld stop 1>&2
