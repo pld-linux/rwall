@@ -3,12 +3,12 @@ Summary(de):	Client und Server zum Senden von Nachrichten an Benutzer am entfern
 Summary(fr):	Client et serveur pour envoyer des messages aux utilisteurs de machines distantes
 Summary(tr):	Baþka bir makinada çalýþan tüm kullanýcýlara mesaj gönderme
 Name:		rwall
-Version:	0.16
-Release:	8
+Version:	0.17
+Release:	0
 License:	BSD
 Group:		Networking/Daemons
 Group(pl):	Sieciowe/Serwery
-Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/daemons/netkit-%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
 Source1:	rwalld.init
 Patch0:		netkit-rwall-WALL_CMD.patch
 Prereq:		/sbin/chkconfig
