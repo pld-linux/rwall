@@ -1,11 +1,13 @@
 Summary:	Client for sending messages to a host's logged in users
+Summary(es):	Cliente y servidor para enviar mensajes para usuarios en máquinas remotas
 Summary(de):	Client zum Senden von Nachrichten an Benutzer am entfernten Host
 Summary(fr):	Client pour envoyer des messages aux utilisteurs de machines distantes
 Summary(pl):	Klient do wysy³ania komunikatów do zalogowanych u¿ytkowników
+Summary(pt_BR):	Cliente e servidor para enviar mensagens para usuários em máquinas remotas
 Summary(tr):	Baþka çalýþan tüm kullanýcýlara mesaj gönderme
 Name:		rwall
 Version:	0.17
-Release:	12
+Release:	13
 License:	BSD
 Group:		Networking
 Group(de):	Netzwerkwesen
@@ -30,6 +32,13 @@ Der rwall-Client sendet eine Meldung an einen rwall-Dämon, der auf
 einem entfernten Rechner läuft und die Meldung an alle Benutzer der
 des entfernten Rechners verbreitet.
 
+%description -l es
+El cliente rwall envía un mensaje para un servidor rwall ejecutando
+en una máquina remota, que retransmite el mensaje para todos
+los usuarios de esta máquina. El servidor rwall es ejecutado por
+el inetd (/etc/inetd.conf), y se inhabilita por defecto en los
+sistemas.
+
 %description -l fr
 Le client rwall envoie un message à un démon rwall tournant sur une
 machine distante, qui relaie le message vers tous les utilisateurs de
@@ -40,6 +49,12 @@ Komenda rwall wysy³a komunikat do wszystkich u¿ytkowników zalogowanych
 na okre¶lony komputer. Lokalny klient rwall wysy³a komunikat do
 serwera rwall dzia³aj±cego na wybranym komputerze, który to przekazuje
 go wszystkim zalogowanym tam u¿ytkownikom.
+
+%description -l pt_BR
+O cliente rwall envia uma mensagem para um servidor rwall rodando
+numa máquina remota, o qual retransmite a mensagem para todos
+os usuários dessa máquina. O servidor rwall é executado pelo inetd
+(/etc/inetd.conf), e é desabilitado por default nos sistemas.
 
 %description -l tr
 Bir rwall sunucusu kendisine istemci tarafýndan gönderilen bir mesajý
