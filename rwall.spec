@@ -29,11 +29,10 @@ einem entfernten Rechner läuft und die Meldung an alle Benutzer der
 des entfernten Rechners verbreitet.
 
 %description -l es
-El cliente rwall envía un mensaje para un servidor rwall ejecutando
-en una máquina remota, que retransmite el mensaje para todos
-los usuarios de esta máquina. El servidor rwall es ejecutado por
-el inetd (/etc/inetd.conf), y se inhabilita por defecto en los
-sistemas.
+El cliente rwall envía un mensaje para un servidor rwall ejecutando en
+una máquina remota, que retransmite el mensaje para todos los usuarios
+de esta máquina. El servidor rwall es ejecutado por el inetd
+(/etc/inetd.conf), y se inhabilita por defecto en los sistemas.
 
 %description -l fr
 Le client rwall envoie un message à un démon rwall tournant sur une
@@ -47,9 +46,9 @@ serwera rwall dzia³aj±cego na wybranym komputerze, który to przekazuje
 go wszystkim zalogowanym tam u¿ytkownikom.
 
 %description -l pt_BR
-O cliente rwall envia uma mensagem para um servidor rwall rodando
-numa máquina remota, o qual retransmite a mensagem para todos
-os usuários dessa máquina. O servidor rwall é executado pelo inetd
+O cliente rwall envia uma mensagem para um servidor rwall rodando numa
+máquina remota, o qual retransmite a mensagem para todos os usuários
+dessa máquina. O servidor rwall é executado pelo inetd
 (/etc/inetd.conf), e é desabilitado por default nos sistemas.
 
 %description -l tr
@@ -99,7 +98,7 @@ if [ -f /var/lock/subsys/rwalld ]; then
 else
 	echo "Type \"/etc/rc.d/init.d/rwalld start\" to start rwalld server" 1>&2
 fi
-	
+
 %preun -n rwalld
 if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/rwalld ]; then
