@@ -33,14 +33,14 @@ logged in to a specified host machine.
 %patch2 -p1
 
 %build
-make RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
+%{__make} RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}/man{1,8}}
 install -d $RPM_BUILD_ROOT/etc/rc.d/init.d
 
-make INSTALLROOT=$RPM_BUILD_ROOT install
+%{__make} INSTALLROOT=$RPM_BUILD_ROOT install
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/rwalld
 
 strip --strip-unneeded $RPM_BUILD_ROOT{%{_bindir},%{_sbindir}}/* || :
