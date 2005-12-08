@@ -3,7 +3,7 @@
 # chkconfig:	- 60 20
 # description:	The rwall protocol allows remote users to display messages \
 #		on all of the active terminals on a system (like local \
-#		users can do with the wall command). 
+#		users can do with the wall command).
 # processname:	rpc.rwalld
 
 # Source function library.
@@ -46,7 +46,7 @@ case "$1" in
 		rm -f /var/lock/subsys/rwalld >/dev/null 2>&1
 	else
 		msg_not_running rpc.rwalld
-	fi	
+	fi
 	;;
   status)
 	status rpc.rwalld
