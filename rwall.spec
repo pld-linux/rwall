@@ -1,6 +1,6 @@
 Summary:	Client for sending messages to a host's logged in users
-Summary(es):	Cliente y servidor para enviar mensajes para usuarios en máquinas remotas
 Summary(de):	Client zum Senden von Nachrichten an Benutzer am entfernten Host
+Summary(es):	Cliente y servidor para enviar mensajes para usuarios en máquinas remotas
 Summary(fr):	Client pour envoyer des messages aux utilisteurs de machines distantes
 Summary(pl):	Klient do wysy³ania komunikatów do zalogowanych u¿ytkowników
 Summary(pt_BR):	Cliente e servidor para enviar mensagens para usuários em máquinas remotas
@@ -14,6 +14,7 @@ Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{ver
 # Source0-md5:	c7a85262fc9911e0574ce5706ce69369
 Source1:	%{name}d.init
 Patch0:		netkit-%{name}-WALL_CMD.patch
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,8 +60,8 @@ o anda çalýþan tüm kullanýcýlara yansýtýr.
 Summary:	Server for sending messages to a host's logged in users
 Summary(pl):	Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników
 Group:		Networking/Daemons
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 Obsoletes:	rwall-server
 
 %description -n rwalld
@@ -70,7 +71,7 @@ Server for sending messages to a host's logged in users.
 Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników.
 
 %prep
-%setup -q -n netkit-rwall-%{version}
+%setup -q -n netkit-%{name}-%{version}
 %patch0 -p1
 
 %build
@@ -98,17 +99,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post -n rwalld
 /sbin/chkconfig --add rwalld
-if [ -f /var/lock/subsys/rwalld ]; then
-	/etc/rc.d/init.d/rwalld restart 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rwalld start\" to start rwalld server" 1>&2
-fi
+%service rwalld restart "rwalld server"
 
 %preun -n rwalld
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/rwalld ]; then
-		/etc/rc.d/init.d/rwalld stop 1>&2
-	fi
+	%service rwalld stop
 	/sbin/chkconfig --del rwalld
 fi
 
