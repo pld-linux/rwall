@@ -79,6 +79,7 @@ Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników.
 	--installroot=$RPM_BUILD_ROOT
 
 %{__make} \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}"
 
 %install
@@ -109,6 +110,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%doc BUGS ChangeLog README
 %attr(755,root,root) %{_bindir}/rwall
 %{_mandir}/man1/rwall.1*
 
