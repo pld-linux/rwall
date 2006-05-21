@@ -7,7 +7,7 @@ Summary(pt_BR):	Cliente e servidor para enviar mensagens para usuários em máquin
 Summary(tr):	Baþka çalýþan tüm kullanýcýlara mesaj gönderme
 Name:		rwall
 Version:	0.17
-Release:	14
+Release:	15
 License:	BSD
 Group:		Networking
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
