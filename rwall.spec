@@ -1,10 +1,10 @@
 Summary:	Client for sending messages to a host's logged in users
-Summary(de.UTF-8):   Client zum Senden von Nachrichten an Benutzer am entfernten Host
-Summary(es.UTF-8):   Cliente y servidor para enviar mensajes para usuarios en máquinas remotas
-Summary(fr.UTF-8):   Client pour envoyer des messages aux utilisteurs de machines distantes
-Summary(pl.UTF-8):   Klient do wysyłania komunikatów do zalogowanych użytkowników
-Summary(pt_BR.UTF-8):   Cliente e servidor para enviar mensagens para usuários em máquinas remotas
-Summary(tr.UTF-8):   Başka çalışan tüm kullanıcılara mesaj gönderme
+Summary(de.UTF-8):	Client zum Senden von Nachrichten an Benutzer am entfernten Host
+Summary(es.UTF-8):	Cliente y servidor para enviar mensajes para usuarios en máquinas remotas
+Summary(fr.UTF-8):	Client pour envoyer des messages aux utilisteurs de machines distantes
+Summary(pl.UTF-8):	Klient do wysyłania komunikatów do zalogowanych użytkowników
+Summary(pt_BR.UTF-8):	Cliente e servidor para enviar mensagens para usuários em máquinas remotas
+Summary(tr.UTF-8):	Başka çalışan tüm kullanıcılara mesaj gönderme
 Name:		rwall
 Version:	0.17
 Release:	15
@@ -58,7 +58,7 @@ o anda çalışan tüm kullanıcılara yansıtır.
 
 %package -n rwalld
 Summary:	Server for sending messages to a host's logged in users
-Summary(pl.UTF-8):   Serwer do wysyłania komunikatów do zalogowanych użytkowników
+Summary(pl.UTF-8):	Serwer do wysyłania komunikatów do zalogowanych użytkowników
 Group:		Networking/Daemons
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
