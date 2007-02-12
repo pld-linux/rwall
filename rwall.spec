@@ -1,10 +1,10 @@
 Summary:	Client for sending messages to a host's logged in users
-Summary(de):	Client zum Senden von Nachrichten an Benutzer am entfernten Host
-Summary(es):	Cliente y servidor para enviar mensajes para usuarios en máquinas remotas
-Summary(fr):	Client pour envoyer des messages aux utilisteurs de machines distantes
-Summary(pl):	Klient do wysy³ania komunikatów do zalogowanych u¿ytkowników
-Summary(pt_BR):	Cliente e servidor para enviar mensagens para usuários em máquinas remotas
-Summary(tr):	Başka çalışan tüm kullanıcılara mesaj gönderme
+Summary(de.UTF-8):   Client zum Senden von Nachrichten an Benutzer am entfernten Host
+Summary(es.UTF-8):   Cliente y servidor para enviar mensajes para usuarios en mÃ¡quinas remotas
+Summary(fr.UTF-8):   Client pour envoyer des messages aux utilisteurs de machines distantes
+Summary(pl.UTF-8):   Klient do wysyÅ‚ania komunikatÃ³w do zalogowanych uÅ¼ytkownikÃ³w
+Summary(pt_BR.UTF-8):   Cliente e servidor para enviar mensagens para usuÃ¡rios em mÃ¡quinas remotas
+Summary(tr.UTF-8):   BaÅŸka Ã§alÄ±ÅŸan tÃ¼m kullanÄ±cÄ±lara mesaj gÃ¶nderme
 Name:		rwall
 Version:	0.17
 Release:	15
@@ -24,41 +24,41 @@ message to the rwall daemon running on the specified host, and the
 rwall daemon relays the message to all of the users logged in to that
 host.
 
-%description -l de
-Der rwall-Client sendet eine Meldung an einen rwall-Dämon, der auf
-einem entfernten Rechner läuft und die Meldung an alle Benutzer der
+%description -l de.UTF-8
+Der rwall-Client sendet eine Meldung an einen rwall-DÃ¤mon, der auf
+einem entfernten Rechner lÃ¤uft und die Meldung an alle Benutzer der
 des entfernten Rechners verbreitet.
 
-%description -l es
-El cliente rwall envía un mensaje para un servidor rwall ejecutando en
-una máquina remota, que retransmite el mensaje para todos los usuarios
-de esta máquina. El servidor rwall es ejecutado por el inetd
+%description -l es.UTF-8
+El cliente rwall envÃ­a un mensaje para un servidor rwall ejecutando en
+una mÃ¡quina remota, que retransmite el mensaje para todos los usuarios
+de esta mÃ¡quina. El servidor rwall es ejecutado por el inetd
 (/etc/inetd.conf), y se inhabilita por defecto en los sistemas.
 
-%description -l fr
-Le client rwall envoie un message à un démon rwall tournant sur une
+%description -l fr.UTF-8
+Le client rwall envoie un message Ã  un dÃ©mon rwall tournant sur une
 machine distante, qui relaie le message vers tous les utilisateurs de
 la machine distante.
 
-%description -l pl
-Komenda rwall wysy³a komunikat do wszystkich u¿ytkowników zalogowanych
-na okre¶lony komputer. Lokalny klient rwall wysy³a komunikat do
-serwera rwall dzia³aj±cego na wybranym komputerze, który to przekazuje
-go wszystkim zalogowanym tam u¿ytkownikom.
+%description -l pl.UTF-8
+Komenda rwall wysyÅ‚a komunikat do wszystkich uÅ¼ytkownikÃ³w zalogowanych
+na okreÅ›lony komputer. Lokalny klient rwall wysyÅ‚a komunikat do
+serwera rwall dziaÅ‚ajÄ…cego na wybranym komputerze, ktÃ³ry to przekazuje
+go wszystkim zalogowanym tam uÅ¼ytkownikom.
 
-%description -l pt_BR
+%description -l pt_BR.UTF-8
 O cliente rwall envia uma mensagem para um servidor rwall rodando numa
-máquina remota, o qual retransmite a mensagem para todos os usuários
-dessa máquina. O servidor rwall é executado pelo inetd
-(/etc/inetd.conf), e é desabilitado por default nos sistemas.
+mÃ¡quina remota, o qual retransmite a mensagem para todos os usuÃ¡rios
+dessa mÃ¡quina. O servidor rwall Ã© executado pelo inetd
+(/etc/inetd.conf), e Ã© desabilitado por default nos sistemas.
 
-%description -l tr
-Bir rwall sunucusu kendisine istemci tarafından gönderilen bir mesajı
-o anda çalışan tüm kullanıcılara yansıtır.
+%description -l tr.UTF-8
+Bir rwall sunucusu kendisine istemci tarafÄ±ndan gÃ¶nderilen bir mesajÄ±
+o anda Ã§alÄ±ÅŸan tÃ¼m kullanÄ±cÄ±lara yansÄ±tÄ±r.
 
 %package -n rwalld
 Summary:	Server for sending messages to a host's logged in users
-Summary(pl):	Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników
+Summary(pl.UTF-8):   Serwer do wysyÅ‚ania komunikatÃ³w do zalogowanych uÅ¼ytkownikÃ³w
 Group:		Networking/Daemons
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
@@ -67,8 +67,8 @@ Obsoletes:	rwall-server
 %description -n rwalld
 Server for sending messages to a host's logged in users.
 
-%description -n rwalld -l pl
-Serwer do wysy³ania komunikatów do zalogowanych u¿ytkowników.
+%description -n rwalld -l pl.UTF-8
+Serwer do wysyÅ‚ania komunikatÃ³w do zalogowanych uÅ¼ytkownikÃ³w.
 
 %prep
 %setup -q -n netkit-%{name}-%{version}
