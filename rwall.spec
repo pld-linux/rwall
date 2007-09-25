@@ -7,13 +7,14 @@ Summary(pt_BR.UTF-8):	Cliente e servidor para enviar mensagens para usuários em
 Summary(tr.UTF-8):	Başka çalışan tüm kullanıcılara mesaj gönderme
 Name:		rwall
 Version:	0.17
-Release:	16
+Release:	17
 License:	BSD
 Group:		Networking
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
 # Source0-md5:	c7a85262fc9911e0574ce5706ce69369
 Source1:	%{name}d.init
 Patch0:		netkit-%{name}-WALL_CMD.patch
+Patch1:		netkit-%{name}-droppriv-later.patch
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -73,6 +74,7 @@ Serwer do wysyłania komunikatów do zalogowanych użytkowników.
 %prep
 %setup -q -n netkit-%{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 ./configure \
