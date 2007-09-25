@@ -1,0 +1,45 @@
+--- netkit-rwall-0.17/rpc.rwalld/rwalld.c~	2007-09-25 19:29:52.000000000 +0200
++++ netkit-rwall-0.17/rpc.rwalld/rwalld.c	2007-09-25 19:30:34.000000000 +0200
+@@ -90,20 +90,6 @@
+ 		exit(1);
+ 	}
+ 
+-	if (getuid() == 0 || geteuid() == 0) {
+-		struct passwd *pwd = getpwnam("nobody");
+-		if (pwd) {
+-			initgroups(pwd->pw_name, pwd->pw_gid);
+-			setgid(pwd->pw_gid);
+-			setuid(pwd->pw_uid);
+-		}
+-		seteuid(0);  /* this should fail */
+-		if (getuid() == 0 || geteuid() == 0) {
+-			syslog(LOG_CRIT, "can't drop root privileges");
+-			exit(1);
+-		}
+-	}
+-
+         /*
+          * See if inetd started us
+          */
+@@ -153,6 +139,21 @@
+ 		(void)fprintf(stderr, "unable to register (WALLPROG, WALLVERS, udp).\n");
+ 		exit(1);
+ 	}
++
++	if (getuid() == 0 || geteuid() == 0) {
++		struct passwd *pwd = getpwnam("nobody");
++		if (pwd) {
++			initgroups(pwd->pw_name, pwd->pw_gid);
++			setgid(pwd->pw_gid);
++			setuid(pwd->pw_uid);
++		}
++		seteuid(0);  /* this should fail */
++		if (getuid() == 0 || geteuid() == 0) {
++			syslog(LOG_CRIT, "can't drop root privileges");
++			exit(1);
++		}
++	}
++
+ 	svc_run();
+ 	(void)fprintf(stderr, "svc_run returned\n");
+ 	exit(1);
