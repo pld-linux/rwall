@@ -73,8 +73,8 @@ Serwer do wysyłania komunikatów do zalogowanych użytkowników.
 
 %prep
 %setup -q -n netkit-%{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 ./configure \
