@@ -7,7 +7,7 @@ Summary(pt_BR.UTF-8):	Cliente e servidor para enviar mensagens para usuários em
 Summary(tr.UTF-8):	Başka çalışan tüm kullanıcılara mesaj gönderme
 Name:		rwall
 Version:	0.17
-Release:	19
+Release:	20
 License:	BSD
 Group:		Networking
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
@@ -15,6 +15,9 @@ Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-%{name}-%{ver
 Source1:	%{name}d.init
 Patch0:		netkit-%{name}-WALL_CMD.patch
 Patch1:		netkit-%{name}-droppriv-later.patch
+Patch2:		netkit-%{name}-no-strip.patch
+BuildRequires:	libtirpc-devel
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -75,6 +78,7 @@ Serwer do wysyłania komunikatów do zalogowanych użytkowników.
 %setup -q -n netkit-%{name}-%{version}
 %patch -P0 -p1
 %patch -P1 -p1
+%patch -P2 -p1
 
 %build
 ./configure \
@@ -82,7 +86,8 @@ Serwer do wysyłania komunikatów do zalogowanych użytkowników.
 
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags}"
+	CFLAGS="%{rpmcflags} $(pkg-config --cflags libtirpc)" \
+	LIBS="$(pkg-config --libs libtirpc)"
 
 %install
 rm -rf $RPM_BUILD_ROOT
